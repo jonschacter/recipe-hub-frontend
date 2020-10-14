@@ -1,17 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import LoginButton from './user/LoginButton.js'
 import SignupButton from './user/SignupButton.js'
 
-const Welcome = () => {
+const Welcome = ({ loggedIn }) => {
     return (
         <div>
-            <h1>WELCOME</h1>
-            <p>
-                <LoginButton/> or <SignupButton/>
-            </p>
+            { loggedIn ? null : <p><LoginButton/> or <SignupButton/></p> }
         </div>
     )
 }
 
-export default Welcome
+const mapStateToProps = ({ currentUser }) => {
+    return {
+        loggedIn: !!currentUser
+    }
+}
+
+export default connect(mapStateToProps)(Welcome)
