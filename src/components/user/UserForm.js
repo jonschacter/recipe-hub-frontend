@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { login } from '../../actions/currentUser.js'
+import { signup } from '../../actions/currentUser.js'
 
 class UserForm extends Component {
     constructor(props){
@@ -12,7 +15,18 @@ class UserForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        console.log("submitted")
+        
+        if (this.state.type === "Sign Up") {
+            this.props.signup(this.state, this.props.history)
+        } else {
+            this.props.login(this.state, this.props.history)
+        }
+
+        this.setState({
+            username: "",
+            password: "",
+            type: ""
+        })
     }
 
     handleChange = ({ target: { name, value } }) => {
@@ -36,4 +50,4 @@ class UserForm extends Component {
     }
 }
 
-export default UserForm
+export default connect(null, { login, signup })(UserForm)
