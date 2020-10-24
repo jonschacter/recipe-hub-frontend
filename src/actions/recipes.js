@@ -1,3 +1,10 @@
+export const setRecipes = recipes => {
+    return {
+        type: "SET_RECIPES",
+        recipes
+    }
+}
+
 export const getRecipes = () => {
     return dispatch => {
         return fetch('http://localhost:3001/api/v1/recipes', {
@@ -9,7 +16,7 @@ export const getRecipes = () => {
         })
             .then(resp => resp.json())
             .then(data => {
-                console.log(data)
+                dispatch(setRecipes(data))
             })
             .catch(error => alert(error))
     }
