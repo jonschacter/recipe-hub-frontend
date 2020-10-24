@@ -1,6 +1,6 @@
 export const getRecipes = () => {
     return dispatch => {
-        return fetch('http://localhost:3001/recipes', {
+        return fetch('http://localhost:3001/api/v1/recipes', {
             credentials: "include",
             method: "GET",
             headers: {
