@@ -29,6 +29,7 @@ class App extends Component {
                         <Route exact path="/login" render={(routerProps) => <UserForm {...routerProps} type="Log In" />} />
                         <Route exact path="/signup" render={(routerProps) => <UserForm {...routerProps} type="Sign Up" />} />
                         <Route exact path="/recipes" component={Recipes} />
+                        <Route exact path={`/recipes/:id`} component={RecipeShow} />
                     </Switch>
                 </Router>
             </div>
