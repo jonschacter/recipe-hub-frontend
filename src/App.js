@@ -3,15 +3,19 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { getCurrentUser } from './actions/currentUser.js'
+import { getRecipes } from './actions/recipes.js'
 
 import Navbar from './components/Navbar.js'
 import Welcome from './components/Welcome.js'
 import UserForm from './components/user/UserForm.js'
+import Recipes from './components/recipe/Recipes.js'
+import RecipeShow from './components/recipe/RecipeShow.js'
 
 class App extends Component {
     
     componentDidMount(){
         this.props.getCurrentUser()
+        this.props.getRecipes()
     }
     
     render(){
@@ -24,6 +28,7 @@ class App extends Component {
                         <Route exact path="/" component={Welcome} />
                         <Route exact path="/login" render={(routerProps) => <UserForm {...routerProps} type="Log In" />} />
                         <Route exact path="/signup" render={(routerProps) => <UserForm {...routerProps} type="Sign Up" />} />
+                        <Route exact path="/recipes" component={Recipes} />
                     </Switch>
                 </Router>
             </div>
@@ -31,4 +36,4 @@ class App extends Component {
     }
 }
 
-export default connect(null, { getCurrentUser })(App)
+export default connect(null, { getCurrentUser, getRecipes })(App)
