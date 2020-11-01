@@ -7,7 +7,7 @@ const Navbar = ({ loggedIn, logout, history }) => {
     return(
         <div>
             { loggedIn ? null : <><Link to="/">Home</Link> | </> }
-            { loggedIn ? <><Link to="/" onClick={ () => logout(history) }>Log Out</Link></> : null}
+            { loggedIn ? <><Link to="/recipes">My Recipes</Link> | <Link to="/" onClick={ () => logout(history) }>Log Out</Link></> : null}
         </div>
     )
 }
