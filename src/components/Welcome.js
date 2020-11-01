@@ -4,10 +4,14 @@ import { connect } from 'react-redux'
 import LoginButton from './user/LoginButton.js'
 import SignupButton from './user/SignupButton.js'
 
-const Welcome = ({ loggedIn }) => {
+const Welcome = ({ loggedIn, history }) => {
+    const redirectToRecipes = () => {
+        history.push('/recipes')
+    }
+    
     return (
         <div>
-            { loggedIn ? null : <p><LoginButton/> or <SignupButton/></p> }
+            { loggedIn ? redirectToRecipes() : <p><LoginButton/> or <SignupButton/></p> }
         </div>
     )
 }
