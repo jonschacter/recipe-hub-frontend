@@ -3,10 +3,12 @@ import thunk from 'redux-thunk'
 
 import currentUser from './reducers/currentUser.js'
 import recipes from './reducers/recipes.js'
+import recipe from './reducers/recipe.js'
 
 const reducer = combineReducers({
     currentUser,
-    recipes
+    recipes,
+    recipe
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
