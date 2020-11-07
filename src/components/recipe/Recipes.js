@@ -5,8 +5,13 @@ import Recipe from './Recipe.js'
 const Recipes = ({ recipes }) => {
     const renderRecipes = () => {
         return <div>
-            { recipes.map(recipe => {
-                return <Recipe key={recipe.id} recipe={recipe} />
+            { recipes.map(category => {
+                return <div>
+                    <h3>{ category.name }</h3>
+                    { category.recipes.map(recipe => {
+                       return <Recipe key={recipe.id} recipe={recipe} />
+                    })}
+                </div>
             })}
         </div>
     }
