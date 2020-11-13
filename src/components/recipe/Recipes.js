@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import Recipe from './Recipe.js'
 
-const Recipes = ({ recipes }) => {
-    const renderRecipes = () => {
+class Recipes extends Component {
+    renderRecipes = () => {
         return <div>
-            { recipes.map(category => {
+            { this.props.recipes.map(category => {
                 return <div>
                     <h3>{ category.name }</h3>
                     { category.recipes.map(recipe => {
@@ -17,14 +16,16 @@ const Recipes = ({ recipes }) => {
         </div>
     }
     
-    return(
-        <div>
-            <h2>MY RECIPES</h2>
-            { recipes.length > 0 ? renderRecipes() : null }
-            <br /><br />
-            <Link to="/categories/new">Create New Category</Link>
-        </div>
-    )
+    render(){
+        return(
+            <div>
+                <h2>MY RECIPES</h2>
+                { this.props.recipes.length > 0 ? this.renderRecipes() : null }
+                <br /><br />
+                <button>Create New Category</button>
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = ({ recipes }) => {
