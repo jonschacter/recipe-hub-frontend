@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Recipe from './Recipe.js'
+import NewCategoryForm from '../category/NewCategoryForm.js'
 
 class Recipes extends Component {
+    constructor(props){
+        super(props)
+
+        this.state = {
+            newCategoryFormToggle: false
+        }
+    }
+    
     renderRecipes = () => {
         return <div>
             { this.props.recipes.map(category => {
@@ -16,13 +25,22 @@ class Recipes extends Component {
         </div>
     }
     
+    handleNewCategoryFormToggle = () => {
+        this.setState(prevState => ({
+            newCategoryFormToggle: !prevState.newCategoryFormToggle
+        }))
+    }
+
     render(){
         return(
             <div>
                 <h2>MY RECIPES</h2>
                 { this.props.recipes.length > 0 ? this.renderRecipes() : null }
                 <br /><br />
-                <button>Create New Category</button>
+                { this.state.newCategoryFormToggle ? <NewCategoryForm /> : null }
+                <button onClick={this.handleNewCategoryFormToggle}>
+                    { this.state.newCategoryFormToggle ? "Hide Form" : "Create New Category"}
+                </button>
             </div>
         )
     }
