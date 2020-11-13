@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const NewCategoryForm = () => {
-    return(
-        <div>
-            FORM
-        </div>
-    )
+class NewCategoryForm extends Component {
+    render(){
+        return(
+            <div>New Category Form</div>
+        )
+    }
 }
 
 export default NewCategoryForm
