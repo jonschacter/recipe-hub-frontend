@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CategoryForm = () => {
+const NewCategoryForm = () => {
     return(
         <div>
             FORM
@@ -8,4 +8,4 @@ const CategoryForm = () => {
     )
 }
 
-export default CategoryForm
+export default NewCategoryForm
